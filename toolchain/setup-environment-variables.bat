@@ -15,3 +15,5 @@ SET HOME=%PX4_DIR%\home
 
 REM path to Cygwin
 SET PATH=%PX4_DIR%\toolchain\cygwin64\bin
+REM path to GCC for ARM
+SET PATH=%PATH%;%PX4_DIR%\toolchain\gcc-arm\bin
