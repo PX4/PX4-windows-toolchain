@@ -10,3 +10,7 @@
 # ignore most files from gcc-arm
 /toolchain/gcc-arm/*
 !toolchain/gcc-arm/install-gcc-arm.bat
+
+# ignore most files from apache-ant
+/toolchain/apache-ant/*
+!toolchain/apache-ant/install-apache-ant.bat
