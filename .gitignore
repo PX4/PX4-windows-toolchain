@@ -1,0 +1,5 @@
+# ignore most files from cygwin
+/toolchain/cygwin64/*
+!toolchain/cygwin64/install-cygwin-px4.bat
+!toolchain/cygwin64/install-cygwin-setup-download.url
+
