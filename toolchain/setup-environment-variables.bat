@@ -17,5 +17,7 @@ REM path to Cygwin
 SET PATH=%PX4_DIR%\toolchain\cygwin64\bin
 REM path to GCC for ARM
 SET PATH=%PATH%;%PX4_DIR%\toolchain\gcc-arm\bin
+REM path to Java Developement Kit
+SET PATH=%PATH%;%PX4_DIR%\toolchain\jdk\bin
 REM path to Apache Ant, a Java build tool
 set PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
