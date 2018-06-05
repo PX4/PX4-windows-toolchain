@@ -13,11 +13,11 @@ SET PX4_DIR=%~dp0..
 REM home directory for the unix environment
 SET HOME=%PX4_DIR%\home
 
-REM path to Cygwin
+REM path to Cygwin Unix Environment
 SET PATH=%PX4_DIR%\toolchain\cygwin64\bin
-REM path to GCC for ARM
+REM path to GCC for ARM Compiler
 SET PATH=%PATH%;%PX4_DIR%\toolchain\gcc-arm\bin
 REM path to Java Developement Kit
 SET PATH=%PATH%;%PX4_DIR%\toolchain\jdk\bin
 REM path to Apache Ant, a Java build tool
-set PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
+SET PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
