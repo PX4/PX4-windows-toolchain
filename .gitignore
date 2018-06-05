@@ -1,5 +1,8 @@
+# ignore all dot files in home
+/home/.*
+
 # ignore most files from cygwin
 /toolchain/cygwin64/*
 !toolchain/cygwin64/install-cygwin-px4.bat
 !toolchain/cygwin64/install-cygwin-setup-download.url
-
+!toolchain/cygwin64/install-cygwin-python-packages.bat
