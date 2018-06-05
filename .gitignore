@@ -18,3 +18,6 @@
 # ignore most files from apache-ant
 /toolchain/apache-ant/*
 !toolchain/apache-ant/install-apache-ant.bat
+
+# ignore binary in genromfs
+/toolchain/genromfs/genromfs.exe

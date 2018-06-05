@@ -1,0 +1,3 @@
+[submodule "genromfs"]
+    path = toolchain/genromfs/genromfs
+    url = https://github.com/chexum/genromfs.git
