@@ -21,3 +21,5 @@ REM path to Java Developement Kit
 SET PATH=%PATH%;%PX4_DIR%\toolchain\jdk\bin
 REM path to Apache Ant, a Java build tool
 SET PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
+REM path to genromfs
+SET PATH=%PATH%;%PX4_DIR%\toolchain\genromfs\
