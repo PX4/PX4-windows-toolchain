@@ -1,4 +1,5 @@
 @ECHO OFF
+CD %~dp0
 
 CALL toolchain\setup-environment-variables.bat x
 
