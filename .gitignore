@@ -1,5 +1,6 @@
 # ignore all dot files in home
 /home/.*
+!home/.bash_profile
 
 # ignore most files from cygwin
 /toolchain/cygwin64/*
