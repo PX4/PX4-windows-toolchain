@@ -14,7 +14,7 @@ SET LOCALDIR=%TEMP%/cygwin-installation-files
 SET ROOTDIR=%PX4_DIR%/toolchain/cygwin64
 
 REM -- These are the packages we will install (in addition to the default packages)
-SET PACKAGES=cmake,gcc-g++,git,make,ninja,patch,xxd,nano,python2,python2-pip,python2-numpy,python2-jinja2,unzip,astyle,bash-completion,wget
+SET PACKAGES=cmake,gcc-g++,git,make,ninja,patch,xxd,nano,python2,python2-pip,python2-numpy,python2-jinja2,unzip,astyle,bash-completion,wget,libcurl-devel
 
 REM -- Do it!
 ECHO *** Installing Packages
