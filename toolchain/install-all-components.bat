@@ -10,5 +10,3 @@ CALL gcc-arm\install-gcc-arm.bat
 CALL jdk\install-jdk.bat
 CALL apache-ant\install-apache-ant.bat
 CALL genromfs\install-genromfs.bat
-
-PAUSE
