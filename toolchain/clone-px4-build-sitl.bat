@@ -10,5 +10,5 @@ if not exist ".\home\" mkdir home
 cd home
 
 :: start clone PX4 repo, build and run SITL (login shell required because python modules need /usr/local/bin in the PATH!)
-call bash -c "git clone --recursive -j8 https://github.com/PX4/Firmware.git ; cd Firmware && make posix"
+call bash --login -c "git clone --recursive -j8 https://github.com/PX4/Firmware.git ; cd Firmware && make posix"
 popd
