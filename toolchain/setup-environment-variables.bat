@@ -25,3 +25,6 @@ REM home directory for the unix environment
 SET HOME=%PX4_DIR%\home
 REM also set it for cygwin in general to make ssh happy
 CALL bash -c "sed -i '/db_home:/c\db_home:  '$HOME /etc/nsswitch.conf"
+
+REM create optional symlinks to system wide .gitconfig and .ssh
+CALL bash %PX4_DIR%\toolchain\configuration-symlinks.sh
