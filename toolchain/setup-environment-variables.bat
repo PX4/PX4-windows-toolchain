@@ -10,9 +10,6 @@ IF "%1" == "" (
 REM this is the PX4 directory which is one layer above this script
 SET PX4_DIR=%~dp0..
 
-REM home directory for the unix environment
-SET HOME=%PX4_DIR%\home
-
 REM path to Cygwin Unix Environment
 SET PATH=%PX4_DIR%\toolchain\cygwin64\bin
 REM path to GCC for ARM Compiler
@@ -23,3 +20,8 @@ REM path to Apache Ant, a Java build tool
 SET PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
 REM path to genromfs
 SET PATH=%PATH%;%PX4_DIR%\toolchain\genromfs\
+
+REM home directory for the unix environment
+SET HOME=%PX4_DIR%\home
+REM also set it for cygwin in general to make ssh happy
+CALL bash -c "sed -i '/db_home:/c\db_home:  '$HOME /etc/nsswitch.conf"
