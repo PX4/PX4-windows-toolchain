@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<!-- basic installer configuration (https://www.firegiant.com/wix/tutorial/getting-started/the-software-package/)
+	UpgradeCode="EED21B28-B4E2-4F96-91EC-DCC54227CF52" needs to stay unique for this "product"! -->
+	<Product Name="PX4 Toolchain" Id="*" UpgradeCode="EED21B28-B4E2-4F96-91EC-DCC54227CF52"
+		Language="1033" Codepage="1252" Version="0.5.0" Manufacturer="Dronecode">
+		<Package Id="*" Keywords="Installer" Description="PX4 Windows Toolchain Installer"
+			Comments="Created by MaEtUgR" Manufacturer="Dronecode"
+			InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" InstallScope="perMachine" />
+		
+		<!-- remove all other versions -->
+		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<!-- embed files to install as cab archive into the msi file (https://www.firegiant.com/wix/tutorial/getting-started/the-files-inside/) -->
+		<Media Id="1" Cabinet="PX4.cab" EmbedCab="yes" DiskPrompt="#1" />
+		<Property Id="DiskPrompt" Value="PX4 installer" />
+
+		<!-- specified the only feature to install the complete Toolchain (https://www.firegiant.com/wix/tutorial/getting-started/conditional-installation/) -->
+		<Feature Id="Complete" Title="PX4 Toolchain" Description="The complete package." Level="1" ConfigurableDirectory="INSTALLDIR">
+			<ComponentGroupRef Id="MainComponents" />
+			<ComponentRef Id="SaveInformationForUpdate" />
+		</Feature>
+
+		<!-- Realias the system drive to work around the error:
+		"The directory name: WindowsVolume is the same as one of the MSI Public Properties and can cause unforeseen side effects."
+		(http://windows-installer-xml-wix-toolset.687559.n2.nabble.com/Error-using-WindowsVolume-predefined-folder-td3313078.html) -->		
+		<SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]"/>
+		
+		<!-- set up folder structure C:\PX4 and save information necessary for an update -->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<!-- unused directory layer to trick WiX light such that it autogenerates GUIDs -->
+			<Directory Id='ProgramFilesFolder' Name='PFiles'>
+				<Directory Id="WINDOWSVOLUME">
+					<Directory Id="INSTALLDIR" Name="PX4" />
+					
+					<!-- save version and install directory for updates (https://www.firegiant.com/wix/tutorial/getting-started/where-to-install/) -->
+					<Component Id="SaveInformationForUpdate">
+						<RegistryValue Root="HKLM" Key="Software\[Manufacturer]\[ProductName]" Name="InstalledVersion" Type="string" Value="[ProductVersion]" />
+						<RegistryValue Root="HKLM" Key="Software\[Manufacturer]\[ProductName]" Name="InstallDir" Type="string" Value="[INSTALLDIR]" />
+					</Component>
+
+				</Directory>
+			</Directory>
+		</Directory>
+		
+		<!-- get version and install directory from backup to process updates -->
+		<Property Id="INSTALLEDPRODUCTVERSION">
+			<RegistrySearch Id='RegistryInstalledVersion' Type='raw' Root='HKLM' Key="Software\[Manufacturer]\[ProductName]" Name='InstalledVersion' />
+		</Property>
+		<Property Id="INSTALLDIR">
+			<RegistrySearch Id='RegistryInstallDir' Type='raw' Root='HKLM' Key="Software\[Manufacturer]\[ProductName]" Name='InstallDir' />
+		</Property>
+		
+		<!-- background pictures and license -->
+		<WixVariable Id="WixUIBannerBmp" Value="..\banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="..\side.bmp" />
+		<WixVariable Id="WixUILicenseRtf" Value="..\license.rtf" />
+		
+		<!-- call script to restore symbolic links after installation -->
+		<CustomAction Id="SymlinksRestoreAction" ExeCommand="[INSTALLDIR]toolchain\symlinks-restore-after-install.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
+		<CustomAction Id="SymlinksRemoveBackupAction" ExeCommand="[INSTALLDIR]toolchain\symlinks-remove-backup.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
+		<InstallExecuteSequence>
+			<Custom Action="SymlinksRestoreAction" Before="InstallFinalize">NOT (REMOVE~="ALL")</Custom>
+			<Custom Action="SymlinksRemoveBackupAction" After="SymlinksRestoreAction">NOT (REMOVE~="ALL")</Custom>
+		</InstallExecuteSequence>
+		
+		<!-- clone and start after installation -->
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Clone PX4 Repository and Start Simulation" />
+		<CustomAction Id="LaunchAfterInstall" ExeCommand="[INSTALLDIR]toolchain\setup-run-after-install.bat" Directory="INSTALLDIR" Execute='immediate' Impersonate='yes' Return='asyncNoWait'/>
+		<UI>
+			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchAfterInstall">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+		
+		<!-- include UI libraries partly customized in ui.wxs and partly WiX built in (see https://www.firegiant.com/wix/tutorial/user-interface/ui-wizardry/) -->
+		<UIRef Id="WixUI_Custom" />
+		<UIRef Id="WixUI_ErrorProgressText" />
+		
+	</Product>
+</Wix>

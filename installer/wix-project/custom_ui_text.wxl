@@ -1,0 +1,8 @@
+<!-- Customized UI Messages -->
+<WixLocalization Culture="en-US" Codepage="1252" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="MaintenanceWelcomeDlgTitle" Overridable="yes"><!-- _locID_text="MaintenanceWelcomeDlgTitle" _locComment="MaintenanceWelcomeDlgTitle" -->{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard</String>
+	<String Id="WelcomeDlgTitleUpdate" Overridable="yes"><!-- _locID_text="WelcomeDlgTitle" _locComment="WelcomeDlgTitle" -->{\WixUI_Font_Bigger}Welcome to the [ProductName] Update &#13;&#10;from Version [INSTALLEDPRODUCTVERSION] to [ProductVersion]</String>
+	<String Id="PrepareDlgTitle" Overridable="yes"><!-- _locID_text="PrepareDlgTitle" _locComment="PrepareDlgTitle" -->{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard</String>
+	<String Id="WelcomeDlgTitle" Overridable="yes"><!-- _locID_text="WelcomeDlgTitle" _locComment="WelcomeDlgTitle" -->{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard</String>
+	<String Id="VerifyReadyDlgUpdateTextCustomAddition" Overridable="yes"><!-- _locID_text="VerifyReadyDlgUpdateText" _locComment="VerifyReadyDlgUpdateText" -->{\WixUI_Font_Bigger}You're about to Update [ProductName] from [INSTALLEDPRODUCTVERSION] to [ProductVersion].</String>
+</WixLocalization>
