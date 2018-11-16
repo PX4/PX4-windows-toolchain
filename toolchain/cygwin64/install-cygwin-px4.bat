@@ -19,6 +19,6 @@ SET PACKAGES=cmake,gcc-g++,git,make,ninja,patch,xxd,nano,python2,python2-pip,pyt
 REM -- Do it!
 ECHO *** Installing Packages
 ECHO Package list: %PACKAGES%
-setup-x86_64.exe -q -D -L -d -g -o -W -s %SITE% -l "%LOCALDIR%" -R "%ROOTDIR%" -C Base -P %PACKAGES%
+setup-x86_64.exe -q -D -L -d -g -o -W -s %SITE% -l "%LOCALDIR%" -R "%ROOTDIR%" -C Base -P %PACKAGES% > cygwin_setup_ouput.log
 ECHO *** Cygwin Installation Done
 ENDLOCAL
