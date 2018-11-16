@@ -33,5 +33,9 @@ del tmp_cygpath
 REM set home directory for the unix environment
 CALL bash -c "sed -i '/db_home:/c\db_home:  '$PX4_HOME /etc/nsswitch.conf"
 
+REM fix cygwin messing up NTFS permissions with unsupported execution bit
+REM https://georgik.rocks/how-to-fix-incorrect-cygwin-permission-inwindows-7/
+CALL bash -c "sed -i '/cygdrive/c\none /cygdrive cygdrive binary,noacl,posix=0,user 0 0' /etc/fstab"
+
 REM create optional symlinks to system wide .gitconfig and .ssh
 CALL bash %PX4_DIR%\toolchain\configuration-symlinks.sh
