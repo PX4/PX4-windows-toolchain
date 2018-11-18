@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL
-ECHO *** Installing Java Development Kit for PX4 Toolchain
+ECHO *** Installing Java Development Kit
 CD %~dp0
 CALL ..\setup-environment-variables.bat x
 

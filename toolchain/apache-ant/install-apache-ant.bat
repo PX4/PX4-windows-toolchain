@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL
-ECHO ** Installing Apache Ant for PX4 Toolchain
+ECHO ** Installing Apache Ant
 CD %~dp0
 CALL ..\setup-environment-variables.bat x
 

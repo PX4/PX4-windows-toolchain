@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL
-ECHO ** Installing GCC for ARM for PX4 Toolchain
+ECHO ** Installing GCC ARM
 CD %~dp0
 CALL ..\setup-environment-variables.bat x
 

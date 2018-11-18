@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL
-ECHO *** Installing genromfs for PX4 Toolchain
+ECHO *** Installing genromfs
 CD %~dp0
 CALL ..\setup-environment-variables.bat x
 

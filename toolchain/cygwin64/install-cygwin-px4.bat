@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL
-ECHO ** Installing Cygwin for PX4 Toolchain
+ECHO ** Installing Cygwin
 CD %~dp0
 
 ECHO *** Downloading Cygwin Setup

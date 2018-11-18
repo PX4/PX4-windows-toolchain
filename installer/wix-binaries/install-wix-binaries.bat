@@ -1,7 +1,6 @@
 @ECHO OFF
 SETLOCAL
 ECHO ** Installing WiX Toolset for PX4 Toolchain installer generation
-ECHO Note: This script requires the Cygwin environment to be installed already
 CD %~dp0
 CALL ..\..\toolchain\setup-environment-variables.bat x
 
