@@ -32,7 +32,7 @@ dir %BASEDIR% ^
 -dr INSTALLDIR ^
 -cg MainComponents ^
 -gg -g1 -sreg -srd -sfrag -ke ^
--t ..\exclude.xlst
+-t ..\exclude.xslt
 
 ECHO *** Running WiX Candle to compile installation scripts
 %WIXDIR%\candle.exe ..\PX4.wxs ..\ui.wxs heat.wxs
