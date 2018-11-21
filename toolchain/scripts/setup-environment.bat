@@ -7,8 +7,12 @@ IF "%1" == "" (
 	PAUSE
 )
 
-REM this is the PX4 directory which is one layer above this script
-SET PX4_DIR=%~dp0..
+REM this is the PX4 directory which is two layers above this script
+SET PX4_DIR=%~dp0..\..
+REM get rid of the ..\.. in the variable
+PUSHD %PX4_DIR%
+SET PX4_DIR=%CD%
+POPD
 
 REM backup windows path variable to detect windows git installation
 SET WINDOWS_PATH=%PATH%
@@ -23,8 +27,8 @@ REM path to Apache Ant, a Java build tool
 SET PATH=%PATH%;%PX4_DIR%\toolchain\apache-ant\bin
 REM path to genromfs
 SET PATH=%PATH%;%PX4_DIR%\toolchain\genromfs\
-REM path to shell scripts
-SET PATH=%PATH%;%PX4_DIR%\toolchain\scripts\
+REM path to miscellaneous executables e.g. custom shell scripts
+SET PATH=%PATH%;%PX4_DIR%\toolchain\misc\
 
 REM determine home directory
 cygpath -u %PX4_DIR%\home > tmp_cygpath
@@ -38,4 +42,4 @@ REM https://georgik.rocks/how-to-fix-incorrect-cygwin-permission-inwindows-7/
 CALL bash -c "sed '/cygdrive/c\none /cygdrive cygdrive binary,noacl,posix=0,user 0 0' /etc/fstab | sponge /etc/fstab"
 
 REM create optional symlinks to system wide .gitconfig and .ssh
-CALL bash %PX4_DIR%\toolchain\configuration-symlinks.sh
+CALL bash %PX4_DIR%\toolchain\scripts\configure-symlinks.sh

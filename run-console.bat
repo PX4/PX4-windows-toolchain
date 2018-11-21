@@ -1,6 +1,6 @@
 @ECHO OFF
 PUSHD %~dp0
-CALL toolchain\setup-environment-variables.bat x
+CALL toolchain\scripts\setup-environment.bat x
 POPD
 
 REM restore working directory, counterpart is in home/.bash_profile

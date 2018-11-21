@@ -2,7 +2,7 @@
 SETLOCAL
 ECHO ** Installing WiX Toolset for PX4 Toolchain installer generation
 CD %~dp0
-CALL ..\..\toolchain\setup-environment-variables.bat x
+CALL ..\..\toolchain\scripts\setup-environment.bat x
 
 ECHO *** Downloading WiX Toolset
 REM install gcc-arm in this folder

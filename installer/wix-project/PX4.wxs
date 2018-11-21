@@ -57,8 +57,8 @@
 		<WixVariable Id="WixUILicenseRtf" Value="..\license.rtf" />
 		
 		<!-- call script to restore symbolic links after installation -->
-		<CustomAction Id="SymlinksRestoreAction" ExeCommand="[INSTALLDIR]toolchain\symlinks-restore-after-install.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
-		<CustomAction Id="SymlinksRemoveBackupAction" ExeCommand="[INSTALLDIR]toolchain\symlinks-remove-backup.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
+		<CustomAction Id="SymlinksRestoreAction" ExeCommand="[INSTALLDIR]toolchain\scripts\symlinks-restore-after-install.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
+		<CustomAction Id="SymlinksRemoveBackupAction" ExeCommand="[INSTALLDIR]toolchain\scripts\symlinks-remove-backup.bat" Directory="INSTALLDIR" Execute='deferred' Impersonate='no' Return='ignore'/>
 		<InstallExecuteSequence>
 			<Custom Action="SymlinksRestoreAction" Before="InstallFinalize">NOT (REMOVE~="ALL")</Custom>
 			<Custom Action="SymlinksRemoveBackupAction" After="SymlinksRestoreAction">NOT (REMOVE~="ALL")</Custom>
@@ -66,7 +66,7 @@
 		
 		<!-- clone and start after installation -->
 		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Clone PX4 Repository and Start Simulation" />
-		<CustomAction Id="LaunchAfterInstall" ExeCommand="[INSTALLDIR]toolchain\setup-run-after-install.bat" Directory="INSTALLDIR" Execute='immediate' Impersonate='yes' Return='asyncNoWait'/>
+		<CustomAction Id="LaunchAfterInstall" ExeCommand="[INSTALLDIR]toolchain\scripts\clone-px4-run-sitl.bat" Directory="INSTALLDIR" Execute='immediate' Impersonate='yes' Return='asyncNoWait'/>
 		<UI>
 			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchAfterInstall">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
 		</UI>

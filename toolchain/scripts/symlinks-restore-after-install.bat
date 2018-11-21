@@ -1,7 +1,7 @@
 @echo off
 
 pushd %~dp0
-call setup-environment-variables.bat x
+call setup-environment.bat x
 popd
 
 pushd %PX4_DIR%
