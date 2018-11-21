@@ -3,8 +3,7 @@ SETLOCAL
 ECHO ** Generating PX4 Toolchain MSI Installer
 
 REM base directory of the source files
-set BASEDIR=%~dp0..\..
-SET BASEDIR=%~dp0..\Old\samplefirst\
+SET BASEDIR=%~dp0..\..
 
 REM WiX Toolset binaries folder
 SET WIXDIR=%~dp0..\wix-binaries
