@@ -1,0 +1,44 @@
+# Build version
+version: "{build}"
+
+branches:
+  only:
+  - /^v[0-9].*$/
+
+# Build worker image (build VM template)
+image: Visual Studio 2017
+
+# build platform, i.e. Win32 (instead of x86), x64, Any CPU. This setting is optional.
+platform:
+- x64
+
+# scripts that are called at very beginning, before repo cloning
+init:
+- ver
+
+install:
+# install the whole toolchain from online sources
+- call toolchain\scripts\install-all-components.bat
+# fetch the Windows Installer XML Toolset binaries
+- call installer\wix-binaries\install-wix-binaries.bat
+
+build_script:
+# extract version number from git tag
+- git describe --tags > version
+- set /p version= < version
+- del version
+- set version=%version:~1%
+- echo Building Windows Toolchain Installer %version%
+
+# generate the toolchain installer MSI file using WiX
+- call installer\wix-project\generate-msi.bat %version%
+
+artifacts:
+  - path: installer\wix-project\build\PX4 Windows Cygwin Toolchain*.msi
+    name: Installer
+
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: Za5Kwd1s8umbE1ipD2voQR031N/2VfJQPjr3qF2pFqteJjkLGr6ie4iNANBi6O8z
+  artifact: Installer

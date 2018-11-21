@@ -3,7 +3,7 @@
 	<!-- basic installer configuration (https://www.firegiant.com/wix/tutorial/getting-started/the-software-package/)
 	UpgradeCode="EED21B28-B4E2-4F96-91EC-DCC54227CF52" needs to stay unique for this "product"! -->
 	<Product Name="PX4 Toolchain" Id="*" UpgradeCode="EED21B28-B4E2-4F96-91EC-DCC54227CF52"
-		Language="1033" Codepage="1252" Version="0.5.0" Manufacturer="Dronecode">
+		Language="1033" Codepage="1252" Version="$(env.version).0" Manufacturer="Dronecode">
 		<Package Id="*" Keywords="Installer" Description="PX4 Windows Toolchain Installer"
 			Comments="Created by MaEtUgR" Manufacturer="Dronecode"
 			InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" InstallScope="perMachine" />

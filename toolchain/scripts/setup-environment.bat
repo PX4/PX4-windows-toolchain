@@ -5,6 +5,7 @@ IF "%1" == "" (
 	ECHO This file is automatically run by the other scripts, no need to execute manually.
 	ECHO Open environment-setup.bat in an editor to modify the toolchain!
 	PAUSE
+	EXIT /b
 )
 
 REM this is the PX4 directory which is two layers above this script

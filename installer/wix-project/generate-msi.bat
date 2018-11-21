@@ -2,6 +2,15 @@
 SETLOCAL
 ECHO ** Generating PX4 Toolchain MSI Installer
 
+REM determine version number from script call parameter
+SET version=%1
+IF "version" == "" (
+	ECHO Please pass a version number to the script [0.0, 255.255]
+	PAUSE
+    EXIT /b
+)
+ECHO Version number: %version%
+
 REM base directory of the source files
 SET BASEDIR=%~dp0..\..
 REM get rid of the ..\.. in the variable
@@ -42,7 +51,7 @@ ECHO *** Running WiX Light to link the installer file
 heat.wixobj PX4.wixobj ui.wixobj ^
 -b %BASEDIR% ^
 -loc ..\custom_ui_text.wxl ^
--out "PX4 Toolchain.msi"
+-out "PX4 Windows Cygwin Toolchain %version%.msi"
 
 REM remove the symbolic link backup archive from the source directory
 ECHO *** Symbolic links: Removing Backup
