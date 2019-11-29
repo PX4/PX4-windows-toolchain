@@ -42,3 +42,4 @@ deploy:
   auth_token:
     secure: Za5Kwd1s8umbE1ipD2voQR031N/2VfJQPjr3qF2pFqteJjkLGr6ie4iNANBi6O8z
   artifact: Installer
+  tag: $(APPVEYOR_REPO_TAG_NAME)
