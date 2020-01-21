@@ -20,6 +20,12 @@ SET WINDOWS_PATH=%PATH%
 
 REM path to Cygwin Unix Environment
 SET PATH=%PX4_DIR%\toolchain\cygwin64\bin
+REM path to python library
+SET PATH=%PATH%;%PX4_DIR%\toolchain\cygwin64\lib
+REM path to python numpy lib
+SET PATH=%PATH%;%PX4_DIR%\toolchain\cygwin64\lib\lapack
+REM path to GCC for ARM-NONE-EABI
+SET PATH=%PATH%;%PX4_DIR%\toolchain\gcc-arm\arm-none-eabi\bin
 REM path to GCC for ARM Compiler
 SET PATH=%PATH%;%PX4_DIR%\toolchain\gcc-arm\bin
 REM path to Java Developement Kit
