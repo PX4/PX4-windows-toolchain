@@ -1,9 +1,8 @@
 # Build version
 version: "{build}"
 
-branches:
-  only:
-  - /^v[0-9].*$/
+# only build tags
+skip_non_tags: true
 
 # Build worker image (build VM template)
 image: Visual Studio 2017
