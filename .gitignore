@@ -1,6 +1,7 @@
 # ignore all unnecessary files in home
 /home/*
 !home/.bash_profile
+!home/.virc
 
 # ignore most files from cygwin
 /toolchain/cygwin64/*
