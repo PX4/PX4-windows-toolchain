@@ -1,0 +1,13 @@
+" Setting only a few sane defaults that people expect
+" Inspired by the Arch Linux global vimrc
+"
+" Use :help '<option>' to see the documentation for the given option.
+"
+" Use Vim defaults instead of 100% vi compatibility
+" Avoid side-effects when nocompatible has already been set.
+
+if &compatible
+  set nocompatible
+endif
+
+set backspace=indent,eol,start
