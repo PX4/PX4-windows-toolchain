@@ -17,7 +17,7 @@ REM get rid of the ..\.. in the variable
 PUSHD %BASEDIR%
 SET BASEDIR=%CD%
 POPD
-ECHO Base driectory to create the installer for: %CD%
+ECHO Base driectory to create the installer for: %BASEDIR%
 
 REM WiX Toolset binaries folder
 SET WIXDIR=%~dp0..\wix-binaries

@@ -20,18 +20,18 @@
 		@Name = 'home'
 		]" use="@Id" />
 	<xsl:template match="wix:Directory[key('DirectoriesToRemove', @Id)]" />
-		
+
 	<xsl:key name="DirectoryComponentsToRemove" match="wix:Directory[
 		@Name = 'installer' or
 		@Name = 'home'
 		]" use="descendant::wix:Component/@Id" />
 	<xsl:template match="wix:ComponentRef[key('DirectoryComponentsToRemove', @Id)]" />
-	
+
 	<!-- exclude files -->
 	<xsl:key name="FileendingsToRemove" match="wix:Component[
 		substring(wix:File/@Source, string-length(wix:File/@Source) - string-length('.test') +1) = '.test' or
 		substring(wix:File/@Source, string-length(wix:File/@Source) - string-length('.msi') +1) = '.msi'
 		]" use="@Id" />
 	<xsl:template match="*[self::wix:Component or self::wix:ComponentRef] [key('FileendingsToRemove', @Id)]" />
-	
+
 </xsl:stylesheet>
