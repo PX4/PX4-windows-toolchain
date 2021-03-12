@@ -13,8 +13,8 @@ SET ROOTDIR=%CD%
 
 REM configure packages we will install (in addition to the default packages)
 SET PACKAGES=cmake,gcc-g++,gdb,git,make,ninja,patch,xxd,nano,unzip,astyle,bash-completion,wget,libcurl-devel,procps-ng,moreutils
-SET PACKAGES=%PACKAGES%,python27,python27-pip,python27-numpy,python27-jinja2
-SET PACKAGES=%PACKAGES%,python3,python36-pip,python36-numpy,python36-jinja2
+SET PACKAGES=%PACKAGES%,python27,python27-pip,python27-numpy,python27-jinja2,python27-tkinter
+SET PACKAGES=%PACKAGES%,python3,python36-pip,python36-numpy,python36-jinja2,python36-tkinter
 
 
 REM do installation
